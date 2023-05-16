@@ -2,9 +2,6 @@
 
 #include <iostream>
 
-#include "TcpConnection.hpp"
-
-namespace tcp_server_client {
 void TcpClient::Observer::onConnected() {}
 
 void TcpClient::Observer::onReceived([[maybe_unused]] const char *data,
@@ -60,4 +57,3 @@ void TcpClient::onConnectionClosed([[maybe_unused]] int connectionId) {
     m_observer.onDisconnected();
   }
 }
-}  // namespace tcp_server_client

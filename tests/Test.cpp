@@ -1,12 +1,11 @@
 #include <gtest/gtest.h>
 
-#include <tcp-server-client/TcpClient.hpp>
-#include <tcp-server-client/TcpServer.hpp>
+#include <TcpClient.hpp>
+#include <TcpServer.hpp>
 #include <thread>
 
 #include "TestHelper.hpp"
 
-namespace tcp_server_client::tests {
 TEST(TcpTest, ServerListens) {
   constexpr uint16_t port{1234};
   const auto protocol{boost::asio::ip::tcp::v4()};
@@ -148,4 +147,3 @@ TEST(TcpTest, ServerCloses) {
   context.stop();
   thread.join();
 }
-}  // namespace tcp_server_client::tests

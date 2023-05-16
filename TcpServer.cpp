@@ -1,10 +1,8 @@
 #include "TcpServer.hpp"
 
 #include <iostream>
+#include <string>
 
-#include "TcpConnection.hpp"
-
-namespace tcp_server_client {
 void TcpServer::Observer::onConnectionAccepted(
     [[maybe_unused]] int connectionId) {}
 
@@ -77,7 +75,8 @@ void TcpServer::doAccept() {
           TcpConnection::create(std::move(socket), *this, m_connectionCount)};
       connection->startReading();
       m_connections.insert({m_connectionCount, std::move(connection)});
-      std::cout << "TCP Server accepted connection: " << m_connectionCount
+      std::cout << "TCP Server accepted connection: " +
+                       std::to_string(m_connectionCount)
                 << std::endl;
       m_observer.onConnectionAccepted(m_connectionCount);
       m_connectionCount++;
@@ -95,8 +94,9 @@ void TcpServer::onConnectionClosed(int connectionId) {
     return;
   }
   if (m_connections.erase(connectionId) > 0) {
-    std::cout << "TCP Server removed connection: " << connectionId << std::endl;
+    std::cout << "TCP Server removed connection: " +
+                     std::to_string(m_connectionCount)
+              << std::endl;
     m_observer.onConnectionClosed(connectionId);
   }
 }
-}  // namespace tcp_server_client

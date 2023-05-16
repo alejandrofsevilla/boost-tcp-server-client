@@ -1,9 +1,10 @@
-#ifndef TCP_SERVER_CLIENT_TESTS_TEST_HELPER_HPP
-#define TCP_SERVER_CLIENT_TESTS_TEST_HELPER_HPP
+#ifndef TESTS_TEST_HELPER_HPP
+#define TESTS_TEST_HELPER_HPP
 
+#include <algorithm>
+#include <functional>
 #include <random>
 
-namespace tcp_server_client::tests {
 inline std::string generateRandomString(size_t size) {
   std::random_device rd;
   std::mt19937 eng{rd()};
@@ -12,6 +13,5 @@ inline std::string generateRandomString(size_t size) {
   std::generate(str.begin(), str.end(), std::bind(dist, eng));
   return str;
 }
-}  // namespace tcp_server_client::tests
 
 #endif

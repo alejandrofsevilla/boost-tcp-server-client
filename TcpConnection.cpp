@@ -1,13 +1,11 @@
 #include "TcpConnection.hpp"
 
 #include <iostream>
-#include <string>
 
 namespace {
 constexpr auto f_maxPackageSize{1024};
 }  // namespace
 
-namespace tcp_server_client {
 void TcpConnection::Observer::onReceived([[maybe_unused]] int connectionId,
                                          [[maybe_unused]] const char *data,
                                          [[maybe_unused]] const size_t size) {}
@@ -100,4 +98,3 @@ void TcpConnection::doWrite() {
     doWrite();
   });
 }
-}  // namespace tcp_server_client

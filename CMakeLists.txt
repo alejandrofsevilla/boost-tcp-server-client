@@ -17,8 +17,6 @@ target_compile_features(tcp-server-client PRIVATE cxx_std_17)
 
 target_compile_options(tcp-server-client PRIVATE -Wall -Wextra -Wpedantic -Werror -O0)
 
-target_include_directories(tcp-server-client PUBLIC ..)
-
 find_package(Boost 1.74.0 REQUIRED)
 if (Boost_FOUND)
   target_include_directories(tcp-server-client PUBLIC ${Boost_INCLUDE_DIRS})
