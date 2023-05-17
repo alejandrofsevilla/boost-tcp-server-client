@@ -1,4 +1,4 @@
-# Boost Asio Example
+# TCP Server/Client
 Simple TCP server and client using Boost.Asio.
 ## requirements
 - C++17
