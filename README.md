@@ -8,7 +8,7 @@ Asynchronous TCP server and client using Boost.Asio.
 - googletest 1.11.0
 
 ## Example
-### Server:
+### Server
 ```cpp
 #include <TcpServer.hpp>
 #include <iostream>
@@ -37,5 +37,33 @@ server.listen(protocol, port);
 
 server.startAcceptingConnections();
 std::thread thread{[&context]() { context.run(); }};
+\\...
+```
+### Client 
+```cpp
+#include <TcpClient.hpp>
+#include <iostream>
+#include <thread>
+\\...
+struct : TcpClient::Observer {
+  void onConnected() { std::cout << "Client was connected" << std::endl; };
+  void onReceived(const char* data, size_t size) {
+    std::cout << "Data received: ";
+    std::cout.write(data, size);
+    std::cout << std::endl;
+  }
+  void onDisconnected() {
+    std::cout << "Client was disconnected " << std::endl;
+  };
+} observer;
+
+boost::asio::io_context context;
+TcpClient client{context, observer};
+
+std::thread thread{[&context]() { context.run(); }};
+
+constexpr uint16_t port{1234};
+auto address{boost::asio::ip::address::from_string("127.0.0.1")};
+client.connect({address, port});
 \\...
 ```
