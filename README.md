@@ -30,6 +30,7 @@ struct : TcpServer::Observer {
 
 boost::asio::io_context context;
 std::thread thread{[&context]() { context.run(); }};
+
 TcpServer server{context, observer};
 
 constexpr uint16_t port{1234};
@@ -59,6 +60,7 @@ struct : TcpClient::Observer {
 
 boost::asio::io_context context;
 std::thread thread{[&context]() { context.run(); }};
+
 TcpClient client{context, observer};
 
 constexpr uint16_t port{1234};
