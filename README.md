@@ -29,6 +29,7 @@ struct : TcpServer::Observer {
 } observer;
 
 boost::asio::io_context context;
+std::thread thread{[&context]() { context.run(); }};
 TcpServer server{context, observer};
 
 constexpr uint16_t port{1234};
@@ -36,7 +37,6 @@ const auto protocol{boost::asio::ip::tcp::v4()};
 server.listen(protocol, port);
 
 server.startAcceptingConnections();
-std::thread thread{[&context]() { context.run(); }};
 \\...
 ```
 ### Client 
@@ -58,9 +58,8 @@ struct : TcpClient::Observer {
 } observer;
 
 boost::asio::io_context context;
-TcpClient client{context, observer};
-
 std::thread thread{[&context]() { context.run(); }};
+TcpClient client{context, observer};
 
 constexpr uint16_t port{1234};
 auto address{boost::asio::ip::address::from_string("127.0.0.1")};
