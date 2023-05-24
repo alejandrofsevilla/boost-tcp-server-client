@@ -1,5 +1,5 @@
 # TCP Server/Client
-Simple TCP server and client using Boost.Asio.
+Asynchronous TCP server and client using Boost.Asio. 
 ## requirements
 - C++17
 - cmake 3.22.0
