@@ -19,7 +19,7 @@ struct : TcpServer::Observer {
     std::cout << "New client connected with id " << id << std::endl;
   };
   void onReceived(int id, const char* data, size_t size) {
-    std::cout << "Data recived from client with id " << id << ": ";
+    std::cout << "Data received from client with id " << id << ": ";
     std::cout.write(data, size);
     std::cout << std::endl;
   }
