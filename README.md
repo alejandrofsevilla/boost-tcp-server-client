@@ -13,7 +13,9 @@ Asynchronous TCP Server and Client using [Boost.Asio](https://www.boost.org/doc/
 #include <TcpServer.hpp>
 #include <iostream>
 #include <thread>
-\\...
+
+//...
+
 struct : TcpServer::Observer {
   void onConnectionAccepted(int id) {
     std::cout << "New client connected with id " << id << std::endl;
@@ -38,14 +40,17 @@ const auto protocol{boost::asio::ip::tcp::v4()};
 server.listen(protocol, port);
 
 server.startAcceptingConnections();
-\\...
+
+//...
 ```
 ### Client 
 ```cpp
 #include <TcpClient.hpp>
 #include <iostream>
 #include <thread>
-\\...
+
+//...
+
 struct : TcpClient::Observer {
   void onConnected() { std::cout << "Client was connected" << std::endl; };
   void onReceived(const char* data, size_t size) {
@@ -66,5 +71,6 @@ TcpClient client{context, observer};
 constexpr uint16_t port{1234};
 auto address{boost::asio::ip::address::from_string("127.0.0.1")};
 client.connect({address, port});
-\\...
+
+//...
 ```
