@@ -1,6 +1,6 @@
 # ![LinuxWorkflow](https://github.com/alejandrofsevilla/boost-tcp-server-client/actions/workflows/Linux.yml/badge.svg)
 # Boost TCP Server/Client
-Asynchronous TCP Server and Client using [Boost.Asio](https://www.boost.org/doc/libs/1_74_0/doc/html/boost_asio.html). 
+Asynchronous [Boost.Asio](https://www.boost.org/doc/libs/1_74_0/doc/html/boost_asio.html) TCP Server and Client example. 
 
 ## Requirements
 - C++17
