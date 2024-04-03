@@ -8,7 +8,7 @@ Asynchronous [Boost.Asio](https://www.boost.org/doc/libs/1_74_0/doc/html/boost_a
 - Boost 1.74.0
 - GoogleTest 1.11.0
 
-## Example
+## Usage
 ### Server
 ```cpp
 #include <TcpServer.hpp>
