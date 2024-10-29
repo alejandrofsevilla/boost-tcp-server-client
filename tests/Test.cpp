@@ -11,7 +11,7 @@ namespace {
 inline std::string generateRandomString(size_t size) {
   std::random_device rd;
   std::mt19937 eng{rd()};
-  std::uniform_int_distribution<char16_t> dist;
+  std::uniform_int_distribution<int> dist;
   std::string str(size, {});
   std::generate(str.begin(), str.end(), std::bind(dist, eng));
   return str;

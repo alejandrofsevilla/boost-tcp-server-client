@@ -1,4 +1,4 @@
-# ![LinuxWorkflow](https://github.com/alejandrofsevilla/boost-tcp-server-client/actions/workflows/Linux.yml/badge.svg)
+# ![LinuxWorkflow](https://github.com/alejandrofsevilla/boost-tcp-server-client/actions/workflows/Linux.yml/badge.svg) ![MacOsWorkflow](https://github.com/alejandrofsevilla/boost-tcp-server-client/actions/workflows/MacOs.yml/badge.svg)
 # Boost TCP Server/Client
 Asynchronous [Boost.Asio](https://www.boost.org/doc/libs/1_74_0/doc/html/boost_asio.html) TCP Server and Client example. 
 
@@ -69,3 +69,29 @@ auto address{boost::asio::ip::address::from_string("127.0.0.1")};
 client.connect({address, port});
 
 ```
+## How to build
+- Install dependencies.
+  - linux 
+   ```terminal
+   sudo apt-get install libboost-dev
+   sudo apt-get install libgtest-dev
+   ```
+  - macOs
+   ```terminal
+   brew install boost
+   brew install googletest
+   ```
+- Clone repository.
+   ```terminal
+   git clone https://github.com/alejandrofsevilla/boost-tcp-server-client.git
+   cd boost-tcp-server-client
+   ```
+- Build.
+   ```terminal
+   cmake -S . -B build
+   cmake --build build
+   ```
+- Run tests.
+   ```terminal
+   ./build/tests/boost-tcp-server-client-tests 
+   ```

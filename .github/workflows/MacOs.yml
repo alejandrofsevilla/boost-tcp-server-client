@@ -1,4 +1,4 @@
-name: linux build
+name: macOs build
 
 on: [push]
 
@@ -7,15 +7,15 @@ env:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: macOs-latest
 
     steps:
     - uses: actions/checkout@v3
 
     - name: install dependencies
-      run: sudo apt-get update;
-           sudo apt-get install libboost-dev;
-           sudo apt-get install libgtest-dev
+      run: brew update;
+           brew install boost;
+           brew install googletest
       
       
     - name: Configure CMake
@@ -27,4 +27,3 @@ jobs:
     - name: Test
       run: ${{github.workspace}}/build/tests/boost-tcp-server-client-tests 
     
-  
