@@ -71,9 +71,15 @@ client.connect({address, port});
 ```
 ## How to build
 - Install dependencies.
+  - linux 
    ```terminal
    sudo apt-get install libboost-dev
    sudo apt-get install libgtest-dev
+   ```
+  - macOs
+   ```terminal
+   brew install boost
+   brew install googletest
    ```
 - Clone repository.
    ```terminal
