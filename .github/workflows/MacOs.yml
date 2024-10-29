@@ -14,8 +14,8 @@ jobs:
 
     - name: install dependencies
       run: brew update;
-           brew install libboost-dev;
-           brew install libgtest-dev
+           brew install boost;
+           brew install googletest
       
       
     - name: Configure CMake
