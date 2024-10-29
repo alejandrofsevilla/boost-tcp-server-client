@@ -69,7 +69,7 @@ auto address{boost::asio::ip::address::from_string("127.0.0.1")};
 client.connect({address, port});
 
 ```
-## Build and Install
+## How to build
 - Install dependencies.
    ```terminal
    sudo apt-get install libboost-dev
@@ -77,8 +77,8 @@ client.connect({address, port});
    ```
 - Clone repository.
    ```terminal
-   git clone https://github.com/alejandrofsevilla/tcp-server-client.git
-   cd game-of-life
+   git clone https://github.com/alejandrofsevilla/boost-tcp-server-client.git
+   cd boost-tcp-server-client
    ```
 - Build.
    ```terminal
