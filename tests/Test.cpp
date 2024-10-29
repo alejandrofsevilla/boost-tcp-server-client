@@ -2,9 +2,21 @@
 
 #include <TcpClient.hpp>
 #include <TcpServer.hpp>
+#include <algorithm>
+#include <functional>
+#include <random>
 #include <thread>
 
-#include "TestHelper.hpp"
+namespace {
+inline std::string generateRandomString(size_t size) {
+  std::random_device rd;
+  std::mt19937 eng{rd()};
+  std::uniform_int_distribution<char16_t> dist;
+  std::string str(size, {});
+  std::generate(str.begin(), str.end(), std::bind(dist, eng));
+  return str;
+}
+} // namespace
 
 TEST(TcpTest, ServerListens) {
   constexpr uint16_t port{1234};
@@ -48,7 +60,7 @@ TEST(TcpTest, ClientSends) {
   struct : TcpServer::Observer {
     std::string msg{};
     size_t messageCount{0};
-    void onReceived(int, const char* data, size_t size) override {
+    void onReceived(int, const char *data, size_t size) override {
       msg.append(data, size);
     };
   } serverObserver;
@@ -83,7 +95,7 @@ TEST(TcpTest, ServerSends) {
   std::thread thread{[&context]() { context.run(); }};
   struct : TcpClient::Observer {
     std::string msg{};
-    void onReceived(const char* data, size_t size) override {
+    void onReceived(const char *data, size_t size) override {
       msg.append(data, size);
     };
   } clientObserver;

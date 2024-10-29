@@ -1,5 +1,4 @@
 add_executable(boost-tcp-server-client-tests
-  TestHelper.hpp
   Test.cpp)
 
 target_link_libraries(boost-tcp-server-client-tests PRIVATE boost-tcp-server-client)
