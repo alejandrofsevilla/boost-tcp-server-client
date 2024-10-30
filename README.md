@@ -3,7 +3,7 @@
 Asynchronous [Boost.Asio](https://www.boost.org/doc/libs/1_74_0/doc/html/boost_asio.html) TCP server and client example. 
 
 ## Requirements
-- C++17
+- C++17 compiler
 - CMake 3.22.0
 - Boost 1.74.0
 - GoogleTest 1.11.0
