@@ -1,4 +1,4 @@
-# [![LinuxWorkflow](https://github.com/alejandrofsevilla/boost-tcp-server-client/actions/workflows/Linux.yml/badge.svg)](https://github.com/alejandrofsevilla/boost-tcp-server-client/actions/workflows/Linux.yml) [![MacOsWorkflow](https://github.com/alejandrofsevilla/boost-tcp-server-client/actions/workflows/MacOs.yml/badge.svg)](https://github.com/alejandrofsevilla/boost-tcp-server-client/actions/workflows/MacOs.yml)
+# [![LinuxWorkflow](https://github.com/alejandrofsevilla/boost-tcp-server-client/actions/workflows/Linux.yml/badge.svg)](https://github.com/alejandrofsevilla/boost-tcp-server-client/actions/workflows/Linux.yml?event=push) [![MacOsWorkflow](https://github.com/alejandrofsevilla/boost-tcp-server-client/actions/workflows/BuildAndTest.yml/badge.svg)](https://github.com/alejandrofsevilla/boost-tcp-server-client/actions/workflows/BuildAndTest.yml?event=push)
 # Boost TCP Server/Client
 Asynchronous [Boost.Asio](https://www.boost.org/doc/libs/1_74_0/doc/html/boost_asio.html) TCP server and client example. 
 
