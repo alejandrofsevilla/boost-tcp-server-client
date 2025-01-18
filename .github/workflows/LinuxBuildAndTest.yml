@@ -13,9 +13,9 @@ jobs:
     - uses: actions/checkout@v3
 
     - name: install dependencies
-      run: apt-get update;
-           apt-get install boost;
-           apt-get install googletest
+      run: sudo apt-get update;
+           sudo apt-get install boost;
+           sudo apt-get install googletest
       
       
     - name: Configure CMake
