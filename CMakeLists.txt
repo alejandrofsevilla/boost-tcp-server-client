@@ -15,7 +15,7 @@ add_library(${PROJECT_NAME} SHARED
 
 target_compile_features(${PROJECT_NAME} PRIVATE cxx_std_17)
 
-target_compile_options(${PROJECT_NAME} PRIVATE -Wall -Wextra -Wpedantic -Werror -O0)
+target_compile_options(${PROJECT_NAME} PRIVATE -Wall -Wextra -Wpedantic -Werror -O2)
 
 target_include_directories(${PROJECT_NAME} PUBLIC .)
 
