@@ -14,12 +14,8 @@ void TcpServer::Observer::onConnectionClosed(
     [[maybe_unused]] int connectionId) {}
 
 TcpServer::TcpServer(boost::asio::io_context &ioContext, Observer &observer)
-    : m_acceptor{ioContext},
-      m_connections{},
-      m_observer{observer},
-      m_connectionCount{0},
-      m_isAccepting{false},
-      m_isClosing{false} {}
+    : m_acceptor{ioContext}, m_connections{}, m_observer{observer},
+      m_connectionCount{0}, m_isAccepting{false}, m_isClosing{false} {}
 
 bool TcpServer::listen(const boost::asio::ip::tcp &protocol, uint16_t port) {
   try {
@@ -28,9 +24,8 @@ bool TcpServer::listen(const boost::asio::ip::tcp &protocol, uint16_t port) {
     m_acceptor.bind({protocol, port});
     m_acceptor.listen(boost::asio::socket_base::max_connections);
   } catch (const std::exception &e) {
-    std::cerr << "TcpServer::Listen() caught exception: " +
-                     static_cast<std::string>(e.what())
-              << std::endl;
+    std::cerr << "TcpServer::listen() exception: " +
+                     static_cast<std::string>(e.what()) + ".\n";
     return false;
   }
   return true;
@@ -44,8 +39,7 @@ void TcpServer::startAcceptingConnections() {
 
 void TcpServer::send(int connectionId, const char *data, size_t size) {
   if (m_connections.count(connectionId) == 0) {
-    std::cerr << "TcpServer::send() found error: connectionId not found"
-              << std::endl;
+    std::cerr << "TcpServer::send() error: connection not found.\n";
     return;
   }
   m_connections.at(connectionId)->send(data, size);
@@ -59,15 +53,14 @@ void TcpServer::close() {
   }
   m_connections.clear();
   m_isClosing = false;
-  std::cout << "TCP Server was closed" << std::endl;
+  std::cout << "TCPServer disconnected.\n";
 }
 
 void TcpServer::doAccept() {
   m_isAccepting = true;
   m_acceptor.async_accept([this](const auto &error, auto socket) {
     if (error) {
-      std::cerr << "TcpServer::doAccept() found error: " + error.message()
-                << std::endl;
+      std::cerr << "TcpServer::doAccept() error: " + error.message() + ".\n";
       m_isAccepting = false;
       return;
     } else {
@@ -75,9 +68,7 @@ void TcpServer::doAccept() {
           TcpConnection::create(std::move(socket), *this, m_connectionCount)};
       connection->startReading();
       m_connections.insert({m_connectionCount, std::move(connection)});
-      std::cout << "TCP Server accepted connection: " +
-                       std::to_string(m_connectionCount)
-                << std::endl;
+      std::cout << "TCPServer accepted connection.\n";
       m_observer.onConnectionAccepted(m_connectionCount);
       m_connectionCount++;
     }
@@ -94,9 +85,7 @@ void TcpServer::onConnectionClosed(int connectionId) {
     return;
   }
   if (m_connections.erase(connectionId) > 0) {
-    std::cout << "TCP Server removed connection: " +
-                     std::to_string(m_connectionCount)
-              << std::endl;
+    std::cout << "TCPServer removed connection.\n";
     m_observer.onConnectionClosed(connectionId);
   }
 }
