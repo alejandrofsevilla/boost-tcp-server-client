@@ -35,10 +35,8 @@ server.startAcceptingConnections();
 ### Client 
 ```cpp
 struct : TcpClient::Observer {
-  void onConnected() { std::cout << "Client was connected" << std::endl; };
-  void onDisconnected() {
-    std::cout << "Client was disconnected " << std::endl;
-  };
+  void onConnected() { std::cout << "Client connected" << std::endl; };
+  void onDisconnected() { std::cout << "Client disconnected" << std::endl; };
   void onReceived(const char* data, size_t size) {
     std::cout << "Data received: ";
     std::cout.write(data, size);
