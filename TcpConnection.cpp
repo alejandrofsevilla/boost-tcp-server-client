@@ -3,7 +3,7 @@
 #include <iostream>
 
 namespace {
-constexpr auto f_maxPackageSize{1024};
+constexpr auto f_readBufferSize{1024};
 } // namespace
 
 void TcpConnection::Observer::onReceived([[maybe_unused]] int connectionId,
@@ -55,8 +55,8 @@ void TcpConnection::close() {
 
 void TcpConnection::doRead() {
   m_isReading = true;
-  auto buffers = m_readBuffer.prepare(f_maxPackageSize);
-  auto self = shared_from_this();
+  auto buffers{m_readBuffer.prepare(f_readBufferSize)};
+  auto self{shared_from_this()};
   m_socket.async_read_some(buffers, [this, self](const auto &error,
                                                  auto bytesTransferred) {
     if (error) {
@@ -74,7 +74,7 @@ void TcpConnection::doRead() {
 
 void TcpConnection::doWrite() {
   m_isWritting = true;
-  auto self = shared_from_this();
+  auto self{shared_from_this()};
   m_socket.async_write_some(m_writeBuffer.data(), [this, self](
                                                       const auto &error,
                                                       auto bytesTransferred) {
