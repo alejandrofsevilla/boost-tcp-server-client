@@ -70,7 +70,7 @@ client.connect({boost::asio::ip::address::from_string("127.0.0.1"), 1234});
    ```terminal
    ./build/tests/boost-tcp-server-client-tests 
    ```
-### Include in CMake project
+## Include in CMake project
    ```cmake
    include(FetchContent)
    Fetchcontent_Declare(boost-tcp-server-client
